@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html style="height: 100%">
+   <head>
+       <meta charset="utf-8">
+   </head>
+   <body style="height: 100%; margin: 0">
+       <div id="container" style="height: 100%"></div>
+       <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/echarts.min.js"></script>
+       <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts-gl/echarts-gl.min.js"></script>
+       <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts-stat/ecStat.min.js"></script>
+       <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/extension/dataTool.min.js"></script>
+       <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/map/js/china.js"></script>
+       <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/map/js/world.js"></script>
+       <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=ZUONbpqGBsYGXNIYHicvbAbM"></script>
+       <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/extension/bmap.min.js"></script>
+       <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/simplex.js"></script>
+       <script type="text/javascript">
+var dom = document.getElementById("container");
+var myChart = echarts.init(dom);
+var app = {};
+option = null;
+option = {
+    title: {
+        text: '世界上市公司区域分布图',
+        subtext: '数据产生时间：2018年4月1日 12：00：00',
+        sublink: '',
+        left: 'center',
+        top: 'top'
+    },
+    tooltip: {
+        trigger: 'item',
+        formatter: function (params) {
+            var value = (params.value + '');
+           
+            return params.seriesName + '<br/>' + params.name + ' : ' + value;
+        }
+    },
+    
+    toolbox: {
+        show: true,
+        orient: 'vertical',
+        left: 'right',
+        top: 'center',
+        feature: {
+            dataView: {readOnly: false},
+            restore: {},
+            saveAsImage: {}
+        }
+    },
+    visualMap: {
+        min: 0,
+        max: 2000,
+        text:['High','Low'],
+        realtime: false,
+        calculable: true,
+        inRange: {
+            color: ['lightskyblue','yellow', 'orangered']
+        }
+    },
+    series: [
+        {
+            name: '上市公司',
+            type: 'map',
+            mapType: 'world',
+            roam: true,
+            itemStyle:{
+                emphasis:{label:{show:true}}
+            },
+            data:[
+                {name: 'Afghanistan', value: 283},
+                {name: 'Angola', value: 195},
+                {name: 'Albania', value: 310},
+                {name: 'United Arab Emirates', value: 844},
+                {name: 'Argentina', value: 403},
+                {name: 'Armenia', value: 2963},
+                {name: 'French Southern and Antarctic Lands', value: 268},
+                {name: 'Australia', value: 224},
+                {name: 'Austria', value: 840},
+                {name: 'Azerbaijan', value: 909},
+                {name: 'Burundi', value: 923},
+                {name: 'Belgium', value: 109},
+                {name: 'Benin', value: 950},
+                {name: 'Burkina Faso', value: 155},
+                {name: 'Bangladesh', value: 151},
+                {name: 'Bulgaria', value: 738},
+                {name: 'The Bahamas', value: 664},
+                {name: 'Bosnia and Herzegovina', value: 384},
+                {name: 'Belarus', value: 949},
+                {name: 'Belize', value: 308},
+                {name: 'Bermuda', value: 641},
+                {name: 'Bolivia', value: 716},
+                {name: 'Brazil', value: 195},
+                {name: 'Brunei', value: 27},
+                {name: 'Bhutan', value: 716},
+                {name: 'Botswana', value: 196},
+                {name: 'Central African Republic', value: 434},
+                {name: 'Canada', value: 34},
+                {name: 'Switzerland', value: 783},
+                {name: 'Chile', value: 171},
+                {name: 'China', value: 935},
+                {name: 'Ivory Coast', value: 605},
+                {name: 'Cameroon', value: 206},
+                {name: 'Democratic Republic of the Congo', value: 621},
+                {name: 'Republic of the Congo', value: 357},
+                {name: 'Colombia', value: 464},
+                {name: 'Costa Rica', value: 466},
+                {name: 'Cuba', value: 112},
+                {name: 'Northern Cyprus', value: 148},
+                {name: 'Cyprus', value: 110},
+                {name: 'Czech Republic', value: 105},
+                {name: 'Germany', value: 830},
+                {name: 'Djibouti', value: 834},
+                {name: 'Denmark', value: 555},
+                {name: 'Dominican Republic', value: 100},
+                {name: 'Algeria', value: 370},
+                {name: 'Ecuador', value: 150},
+                {name: 'Egypt', value: 780},
+                {name: 'Eritrea', value: 574},
+                {name: 'Spain', value: 461},
+                {name: 'Estonia', value: 129},
+                {name: 'Ethiopia', value: 870},
+                {name: 'Finland', value: 536},
+                {name: 'Fiji', value: 860},
+                {name: 'Falkland Islands', value: 49},
+                {name: 'France', value: 632},
+                {name: 'Gabon', value: 155},
+                {name: 'United Kingdom', value: 620},
+                {name: 'Georgia', value: 438},
+                {name: 'Ghana', value: 242},
+                {name: 'Guinea', value: 108},
+                {name: 'Gambia', value: 168},
+                {name: 'Guinea Bissau', value: 108},
+                {name: 'Equatorial Guinea', value: 696},
+                {name: 'Greece', value: 111},
+                {name: 'Greenland', value: 56},
+                {name: 'Guatemala', value: 143},
+                {name: 'French Guiana', value: 231},
+                {name: 'Guyana', value: 786},
+                {name: 'Honduras', value: 7621},
+                {name: 'Croatia', value: 4338},
+                {name: 'Haiti', value: 989},
+                {name: 'Hungary', value: 100},
+                {name: 'Indonesia', value: 240},
+                {name: 'India', value: 120},
+                {name: 'Ireland', value: 446},
+                {name: 'Iran', value: 240},
+                {name: 'Iraq', value: 309},
+                {name: 'Iceland', value: 318},
+                {name: 'Israel', value: 742},
+                {name: 'Italy', value: 605},
+                {name: 'Jamaica', value: 274},
+                {name: 'Jordan', value: 645},
+                {name: 'Japan', value: 127},
+                {name: 'Kazakhstan', value: 159},
+                {name: 'Kenya', value: 409},
+                {name: 'Kyrgyzstan', value: 533},
+                {name: 'Cambodia', value: 143},
+                {name: 'South Korea', value: 514},
+                {name: 'Kosovo', value: 97},
+                {name: 'Kuwait', value: 299},
+                {name: 'Laos', value: 639},
+                {name: 'Lebanon', value: 434},
+                {name: 'Liberia', value: 395},
+                {name: 'Libya', value: 604},
+                {name: 'Sri Lanka', value: 207},
+                {name: 'Lesotho', value: 200},
+                {name: 'Lithuania', value: 306},
+                {name: 'Luxembourg', value: 507},
+                {name: 'Latvia', value: 209},
+                {name: 'Morocco', value: 316},
+                {name: 'Moldova', value: 103},
+                {name: 'Madagascar', value: 210},
+                {name: 'Mexico', value: 117},
+                {name: 'Macedonia', value: 507},
+                {name: 'Mali', value: 139},
+                {name: 'Myanmar', value: 519},
+                {name: 'Montenegro', value: 620},
+                {name: 'Mongolia', value: 271},
+                {name: 'Mozambique', value: 239},
+                {name: 'Mauritania', value: 360},
+                {name: 'Malawi', value: 150},
+                {name: 'Malaysia', value: 282},
+                {name: 'Namibia', value: 217},
+                {name: 'New Caledonia', value: 246},
+                {name: 'Niger', value: 158},
+                {name: 'Nigeria', value: 159},
+                {name: 'Nicaragua', value: 582},
+                {name: 'Netherlands', value: 166},
+                {name: 'Norway', value: 489},
+                {name: 'Nepal', value: 268},
+                {name: 'New Zealand', value: 436},
+                {name: 'Oman', value: 280},
+                {name: 'Pakistan', value: 173},
+                {name: 'Panama', value: 367},
+                {name: 'Peru', value: 292},
+                {name: 'Philippines', value: 934},
+                {name: 'Papua New Guinea', value: 685},
+                {name: 'Poland', value: 381},
+                {name: 'Puerto Rico', value: 370},
+                {name: 'North Korea', value: 168},
+                {name: 'Portugal', value: 105},
+                {name: 'Paraguay', value: 645},
+                {name: 'Qatar', value: 174},
+                {name: 'Romania', value: 218},
+                {name: 'Russia', value: 218},
+                {name: 'Rwanda', value: 108},
+                {name: 'Western Sahara', value: 514},
+                {name: 'Saudi Arabia', value: 272},
+                {name: 'Sudan', value: 356},
+                {name: 'South Sudan', value: 994},
+                {name: 'Senegal', value: 129},
+                {name: 'Solomon Islands', value: 526},
+                {name: 'Sierra Leone', value: 575},
+                {name: 'El Salvador', value: 621},
+                {name: 'Somaliland', value: 963},
+                {name: 'Somalia', value: 963},
+                {name: 'Republic of Serbia', value: 357},
+                {name: 'Suriname', value: 524},
+                {name: 'Slovakia', value: 543},
+                {name: 'Slovenia', value: 205},
+                {name: 'Sweden', value: 938},
+                {name: 'Swaziland', value: 119},
+                {name: 'Syria', value: 783},
+                {name: 'Chad', value: 117},
+                {name: 'Togo', value: 630},
+                {name: 'Thailand', value: 664},
+                {name: 'Tajikistan', value: 762},
+                {name: 'Turkmenistan', value: 504},
+                {name: 'East Timor', value: 100},
+                {name: 'Trinidad and Tobago', value: 132},
+                {name: 'Tunisia', value: 106},
+                {name: 'Turkey', value: 721},
+                {name: 'United Republic of Tanzania', value: 449},
+                {name: 'Uganda', value: 339},
+                {name: 'Ukraine', value: 460},
+                {name: 'Uruguay', value: 337},
+                {name: 'United States of America', value: 332},
+                {name: 'Uzbekistan', value: 277},
+                {name: 'Venezuela', value: 236},
+                {name: 'Vietnam', value: 890},
+                {name: 'Vanuatu', value: 236},
+                {name: 'West Bank', value: 139},
+                {name: 'Yemen', value: 227},
+                {name: 'South Africa', value: 514},
+                {name: 'Zambia', value: 132},
+                {name: 'Zimbabwe', value: 130}
+            ]
+        }
+    ]
+};
+;
+if (option && typeof option === "object") {
+    myChart.setOption(option, true);
+}
+       </script>
+   </body>
+</html>

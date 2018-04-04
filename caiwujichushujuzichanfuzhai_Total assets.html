@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html style="height: 100%">
+   <head>
+       <meta charset="utf-8">
+   </head>
+   <body style="height: 100%; margin: 0">
+       <div id="container" style="height: 100%"></div>
+       <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/echarts.min.js"></script>
+       <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts-gl/echarts-gl.min.js"></script>
+       <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts-stat/ecStat.min.js"></script>
+       <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/extension/dataTool.min.js"></script>
+       <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/map/js/china.js"></script>
+       <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/map/js/world.js"></script>
+       <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=ZUONbpqGBsYGXNIYHicvbAbM"></script>
+       <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/extension/bmap.min.js"></script>
+       <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/simplex.js"></script>
+       <script type="text/javascript">
+var dom = document.getElementById("container");
+var myChart = echarts.init(dom);
+var app = {};
+option = null;
+app.title = '折柱混合';
+
+option = {
+    tooltip: {
+        trigger: 'axis',
+        axisPointer: {
+            type: 'cross',
+            crossStyle: {
+                color: '#999'
+            }
+        }
+    },
+    toolbox: {
+        feature: {
+            dataView: {show: true, readOnly: false},
+            magicType: {show: true, type: ['line', 'bar']},
+            restore: {show: true},
+            saveAsImage: {show: true}
+        }
+    },
+    legend: {
+        data:['Total assets']
+    },
+    dataZoom:{},
+    grid:{
+        x2:'23%',
+        y:'20%',
+        x:'15%',
+        width:"65%"
+    },
+    xAxis: [
+        {
+            
+            type: 'category',
+            data: ['FY 2017-05-31','FY 2016-05-31','Q3 2017-02-28','Q3 2016-05-31','Q2 2016-11-30','Q2 2016-05-31','Q1 2016-08-31','Q1 2016-05-31','Q3 2016-02-29','Q3 2015-05-31','Q2 2015-11-30','Q2 2015-05-31','Q1 2015-08-31','Q1 2015-05-31','FY 2015-05-31','FY 2014-05-31',',Q3 2015-02-28','Q3 2014-05-31','Q2 2014-11-30','Q2 2014-05-31','Q1 2014-08-31','Q1 2014-05-31','FY 2014-05-31','FY 2013-05-31'],
+            axisPointer: {
+                type: 'shadow'
+            }
+        }
+    ],
+    yAxis: [
+        {
+            type: 'value',
+            name: '值',
+            min: 0,
+            max: 3000000000,
+            interval: 1000000000,
+            axisLabel: {
+                formatter: '{value} ml'
+            }
+        },
+        
+    ],
+    series: [
+        {
+            name:'Total assets',
+            type:'bar',
+            data:[1504100000,	1456000000,	1502100000,	1456000000,	1486600000,	1456000000,	1427000000,	1456000000,	1522000000,	1515000000,	1534600000,	1515000000,	1547200000,	1515000000,	1515000000,	2194000000,	2133800000,	2199500000,	2227700000,	2199500000,	2205400000,	2199500000,	2199500000,	2136900000]
+        }
+    ]
+};
+;
+if (option && typeof option === "object") {
+    myChart.setOption(option, true);
+}
+       </script>
+   </body>
+</html>

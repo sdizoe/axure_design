@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html style="height: 100%">
+   <head>
+       <meta charset="utf-8">
+   </head>
+   <body style="height: 100%; margin: 0">
+       <div id="container" style="height: 100%"></div>
+       <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/echarts.min.js"></script>
+       <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts-gl/echarts-gl.min.js"></script>
+       <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts-stat/ecStat.min.js"></script>
+       <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/extension/dataTool.min.js"></script>
+       <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/map/js/china.js"></script>
+       <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/map/js/world.js"></script>
+       <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=ZUONbpqGBsYGXNIYHicvbAbM"></script>
+       <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/extension/bmap.min.js"></script>
+       <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/simplex.js"></script>
+       <script type="text/javascript">
+var dom = document.getElementById("container");
+var myChart = echarts.init(dom);
+var app = {};
+option = null;
+app.title = '全球上市公司市值排名 - 条形图';
+
+option = {
+    title: {
+        text: '全球上市公司市值排名',
+        subtext: 'top10'
+    },
+    tooltip: {
+        trigger: 'axis',
+        axisPointer: {
+            type: 'shadow'
+        }
+    },
+    legend: {
+        data: ['2017年']
+    },
+    grid: {
+        left: '2%',
+        right: '8%',
+        bottom: '3%',
+        containLabel: true
+    },
+    xAxis: {
+        type: 'value',
+        min: '0',
+        max:'10000',
+        name:'亿美元',
+        boundaryGap: [0, 0.01]
+    },
+    yAxis: {
+        type: 'category',
+        data: ['埃克森美孚（Exxon Mobil）','强生(Johnson&Johnson)','腾讯（Tencent)','阿里巴巴（Alibaba）','伯克希尔·哈撒韦（BerkshireHathaway）','亚马逊（Amazon）','Facebook（脸书）','微软(Microsoft)','Alphabet','苹果（Apple)','上市公司']
+    },
+    series: [
+        {
+            name: '2017年',
+            type: 'bar',
+            data: [3230,3570,3940,4150,4380,4610,4850,5580,6370,8150]
+        }
+    ]
+};
+;
+if (option && typeof option === "object") {
+    myChart.setOption(option, true);
+}
+       </script>
+   </body>
+</html>

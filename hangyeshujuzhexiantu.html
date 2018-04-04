@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html style="height: 100%">
+   <head>
+       <meta charset="utf-8">
+   </head>
+   <body style="height: 100%; margin: 0">
+       <div id="container" style="height: 100%"></div>
+       <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/echarts.min.js"></script>
+       <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts-gl/echarts-gl.min.js"></script>
+       <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts-stat/ecStat.min.js"></script>
+       <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/extension/dataTool.min.js"></script>
+       <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/map/js/china.js"></script>
+       <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/map/js/world.js"></script>
+       <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=ZUONbpqGBsYGXNIYHicvbAbM"></script>
+       <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/extension/bmap.min.js"></script>
+       <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/simplex.js"></script>
+       <script type="text/javascript">
+var dom = document.getElementById("container");
+var myChart = echarts.init(dom);
+var app = {};
+option = null;
+option = {
+     title : {
+        text: '金融行业基础指标趋势图',
+        subtext: '数据产生时间：2018年3月30日',
+        x:'center'
+    },
+    tooltip : {
+        trigger: 'axis',
+    },
+    toolbox: {
+        show : true,
+        feature : {
+            mark : {show: true},
+            dataView : {show: true, readOnly: false},
+            magicType: {show: true, type: ['line', 'bar']},
+            restore : {show: true},
+            saveAsImage : {show: true}
+        }
+    },
+    dataZoom:{},
+    grid:{
+        x2:'23%',
+        y:'20%',
+        x:'13%',
+        width:"65%"
+    },
+    calculable : true,
+    legend: {
+        orient:'vertical',
+        x:'right',
+        top:'10%',
+        data:['总资产','总负债','净资产','净利润',	'流动比率',	'现金比率','资产负债率','已获利息倍数','存货周转率','应收账款周转率','总资产周转率','销售毛利率','销售净利率','净资产收益率ROE','总资产报酬率ROA',	'资产扩张率','净利润同比增长','营业利润同比增长率','净资产同比增长率']
+    },
+    xAxis : [
+        {
+            type : 'category',
+            data : ['2008','2009','2010','2011','2012','2013','2014','2015','2016','2017','2018'],
+        }
+    ],
+    yAxis : [
+        {
+            type : 'value',
+            name : '指标值',
+            max:'1000000',
+            axisLabel : {
+                formatter: '{value} 百万'
+            }
+        },
+        {
+            type : 'value',
+            name : '比率',
+            max:'100',
+            axisLabel : {
+                formatter: '{value} %'
+            }
+        }
+    ],
+    series : [
+
+        {
+            name:'总资产',
+            type:'bar',
+            data:['375319','241272','134047','48351','333556','678908','454456','578765','365789','345768','455543']
+        },
+        {
+            name:'总负债',
+            type:'bar',
+            data:['321686'	,'193437'	,'128249',	'45687','56780','23423','456322','278543','789012','345678','354776']
+        },
+        {
+            name:'净资产',
+            type:'bar',
+            data:[393218, 135923, 340730, 330259, 388081, 248073, 224235, 134928, 67413, 285084, 413283]
+        },
+        {
+            name:'净利润',
+            type:'bar',
+            data:[267409,245766, 234243, 7524, 175338, 128079 ,304407 ,176864, 69456, 254627, 230871]
+        },
+        {
+            name:'流动比率',
+            type:'line',
+            yAxisIndex: 1,
+            data:['1.35','0.26','0.6','43.15','58.64','13.23','0.7','39.08','21.19','36.9','20.53']
+        },
+        {
+            name:'现金比率',
+            type:'line',
+            yAxisIndex: 1,
+            data:['1.35','0.26','0.6','43.15','58.64','13.23','0.7','39.08','21.19','36.9','20.53']
+        },
+        {
+            name:'资产负债率',
+            type:'line',
+            yAxisIndex: 1,
+            data:[40.37,58.64,62.82,13.63,13.23,13.62,38.47,39.08,40.06,21.09,21.19]
+        },
+        {
+            name:'已获利息倍数',
+            type:'line',
+            yAxisIndex: 1,
+            data:[40.37,58.64,62.82,13.63,13.23,13.62,38.47,39.08,40.06,21.09,21.19]
+        },
+        {
+            name:'存货周转率',
+            type:'line',
+            yAxisIndex: 1,
+            data:[40.37,58.64,62.82,13.63,13.23,13.62,38.47,39.08,40.06,21.09,21.19]
+        },
+        {
+            name:'应收账款周转率',
+            type:'line',
+            yAxisIndex: 1,
+            data:[40.37,58.64,62.82,13.63,13.23,13.62,38.47,39.08,40.06,21.09,21.19]
+        },
+        {
+            name:'总资产周转率',
+            type:'line',
+            yAxisIndex: 1,
+            data:[40.37,58.64,62.82,13.63,13.23,13.62,38.47,39.08,40.06,21.09,21.19]
+        },
+        {
+            name:'销售毛利率',
+            type:'line',
+            yAxisIndex: 1,
+            data:[40.37,58.64,62.82,13.63,13.23,13.62,38.47,39.08,40.06,21.09,21.19]
+        },
+        {
+            name:'销售净利率',
+            type:'line',
+            yAxisIndex: 1,
+            data:[40.37,58.64,62.82,13.63,13.23,13.62,38.47,39.08,40.06,21.09,21.19]
+        },
+        {
+            name:'净资产收益率ROE',
+            type:'line',
+            yAxisIndex: 1,
+            data:[40.37,58.64,62.82,13.63,13.23,13.62,38.47,39.08,40.06,21.09,21.19]
+        },
+        {
+            name:'总资产报酬率ROA',
+            type:'line',
+            yAxisIndex: 1,
+            data:[40.37,58.64,62.82,13.63,13.23,13.62,38.47,39.08,40.06,21.09,21.19]
+        },
+        {
+            name:'资产扩张率',
+            type:'line',
+            yAxisIndex: 1,
+            data:[40.37,58.64,62.82,13.63,13.23,13.62,38.47,39.08,40.06,21.09,21.19]
+        },
+        {
+            name:'净利润同比增长',
+            type:'line',
+            yAxisIndex: 1,
+            data:[40.37,58.64,62.82,13.63,13.23,13.62,38.47,39.08,40.06,21.09,21.19]
+        },
+        {
+            name:'营业利润同比增长率',
+            type:'line',
+            yAxisIndex: 1,
+            data:[40.37,58.64,62.82,13.63,13.23,13.62,38.47,39.08,40.06,21.09,21.19]
+        },
+        {
+            name:'净资产同比增长率',
+            type:'line',
+            yAxisIndex: 1,
+            data:[40.37,58.64,62.82,13.63,13.23,13.62,38.47,39.08,40.06,21.09,21.19]
+        },
+    ]
+};
+                    ;
+if (option && typeof option === "object") {
+    myChart.setOption(option, true);
+}
+       </script>
+   </body>
+</html>
